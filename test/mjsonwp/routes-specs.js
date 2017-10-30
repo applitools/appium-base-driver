@@ -72,6 +72,7 @@ describe('MJSONWP', () => {
         const cmdName = routeToCommandName(route, method);
         chai.should().equal(cmdName, undefined);
       }
+      hash.should.equal('bf2f77e5');
     });
   });
 
