@@ -9,15 +9,19 @@ export { BaseDriver, DeviceSettings, ImageHelpers };
 export default BaseDriver;
 
 // MJSONWP exports
-import { MobileJsonWireProtocol, routeConfiguringFunction, errors, isErrorType,
-         errorFromCode, ALL_COMMANDS, METHOD_MAP, routeToCommandName,
-         NO_SESSION_ID_COMMANDS, isSessionCommand } from './lib/mjsonwp';
+import { Protocol, routeConfiguringFunction, errors, isErrorType,
+         errorFromMJSONWPStatusCode, errorFromW3CJsonCode,
+         ALL_COMMANDS, METHOD_MAP, routeToCommandName,
+         NO_SESSION_ID_COMMANDS, isSessionCommand } from './lib/protocol';
 
-export { MobileJsonWireProtocol, routeConfiguringFunction, errors, isErrorType,
-         errorFromCode, ALL_COMMANDS, METHOD_MAP, routeToCommandName,
+export { Protocol, routeConfiguringFunction, errors, isErrorType,
+         errorFromMJSONWPStatusCode, errorFromW3CJsonCode, errorFromMJSONWPStatusCode as errorFromCode,
+         ALL_COMMANDS, METHOD_MAP, routeToCommandName,
          NO_SESSION_ID_COMMANDS, isSessionCommand };
 
 // Express exports
+import { STATIC_DIR } from './lib/express/static';
+export { STATIC_DIR };
 import { server } from './lib/express/server';
 export { server };
 
@@ -29,3 +33,11 @@ export { JWProxy };
 import { codes, getSummaryByCode } from './lib/jsonwp-status/status';
 const statusCodes = codes;
 export { statusCodes, getSummaryByCode };
+
+// W3C capabilities parser
+import { processCapabilities } from './lib/basedriver/capabilities';
+export { processCapabilities };
+
+// Web socket helpers
+import { DEFAULT_WS_PATHNAME_PREFIX } from './lib/express/websocket';
+export { DEFAULT_WS_PATHNAME_PREFIX };
